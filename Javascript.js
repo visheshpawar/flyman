@@ -50,6 +50,16 @@ function toggleMenu() {
         errorDiv.style.display = "none";
         successDiv.style.display = "none";
   
+        if (userId.length === 0) {
+          errorDiv.textContent = "Please enter your User ID.";
+          errorDiv.style.display = "block";
+          return;
+        }
+
+        
+       
+
+
         if (!/^\d+$/.test(userId)) {
           errorDiv.textContent = "User ID must be numeric only.";
           errorDiv.style.display = "block";
@@ -62,18 +72,8 @@ function toggleMenu() {
           return;
         }
   
-        if (password.length === 0) {
-          errorDiv.textContent = "Please enter your Password.";
-          errorDiv.style.display = "block";
-          return;
-        }
-  
-        if (password.length < 6 || password.length > 30) {
-          errorDiv.textContent = "Password must be between 6 and 30 characters.";
-          errorDiv.style.display = "block";
-          return;
-        }
-  
+ 
+   
         const credentials = {
           "12345": "pass123",
           "09876": "pass234",
@@ -95,6 +95,19 @@ function toggleMenu() {
           return;
         }
   
+        if (password.length === 0) {
+          errorDiv.textContent = "Please enter your Password.";
+          errorDiv.style.display = "block";
+          return;
+        }
+  
+        if (password.length < 6 || password.length > 30) {
+          errorDiv.textContent = "Password must be between 6 and 30 characters.";
+          errorDiv.style.display = "block";
+          return;
+        }
+  
+
         if (credentials[userId] !== password) {
           errorDiv.textContent = "Incorrect password.";
           errorDiv.style.display = "block";
@@ -106,7 +119,7 @@ function toggleMenu() {
       const nameOut = credUser[userId];
 document.getElementById
         setTimeout(() => {
-               successDiv.style.display="none";
+          successDiv.style.display="none";
           window.location.href = "homepage.html";
         }, 1500);
       }
