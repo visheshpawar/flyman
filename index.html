@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EasyGo - AMS Login</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background-color: #006d6d;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-container {
+      background-color: #007d7d;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 300px;
+    }
+    .login-container h2 {
+      margin-bottom: 1rem;
+      color: white;
+    }
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+    }
+    button {
+      width: 100%;
+      padding: 0.5rem;
+      margin: 1rem 0;
+      background-color: white;
+      color: #007d7d;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #f0f0f0;
+    }
+    .register-link {
+      color: white;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    .error-message {
+      color: #ffdede;
+      background: #ff4b4b;
+      padding: 0.5rem;
+      border-radius: 5px;
+      margin-bottom: 0.5rem;
+      display: none;
+    }
+    .success-message {
+      color: #d4edda;
+      background: #28a745;
+      padding: 0.5rem;
+      border-radius: 5px;
+      margin-bottom: 0.5rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>EasyGo - AMS</h2>
+    <div id="error" class="error-message"></div>
+    <div id="success" class="success-message"></div>
+    
+    <form onsubmit="validateLogin(event)">
+      <input type="text" placeholder="User ID" id="userId" />
+      <input type="password" placeholder="Password" id="password" />
+      <button type="submit">Login</button>
+    </form>
+
+    <p>New User? <a class="register-link" href="registration.html">Register Yourself</a></p>
+  </div>
+
+  <script src="Javascript.js">
+   
+  </script>
+</body>
+</html>

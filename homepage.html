@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EasyGo - AMS</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: teal;
+      color: white;
+    }
+
+    nav {
+      background-color: #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 10px 20px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .right-text {
+      margin-left: auto;
+      color: white;
+      white-space: nowrap;
+      font-weight: bold;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 10px;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      display: block;
+    }
+
+    nav ul li ul {
+      display: none;
+      position: absolute;
+      background-color: #444;
+      top: 100%;
+      left: 0;
+      min-width: 150px;
+      z-index: 999;
+    }
+
+    nav ul li:hover > ul {
+      display: block;
+    }
+
+    nav ul li ul li a {
+      padding: 10px;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .nav-left {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .right-text {
+        margin-left: 0;
+      }
+
+      #nav-menu {
+        display: none;
+        flex-direction: column;
+        background-color: #333;
+        width: 100%;
+        border-radius: 8px;
+        margin-top: 10px;
+      }
+
+      #nav-menu.show {
+        display: flex;
+      }
+
+      #nav-menu li {
+        width: 100%;
+        border-bottom: 1px solid #444;
+      }
+
+      #nav-menu li ul {
+        position: static;
+        background-color: #444;
+        margin-left: 15px;
+        display: none;
+      }
+
+      #nav-menu li:hover ul {
+        display: block;
+      }
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      background-color: teal;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    form label {
+      font-weight: bold;
+    }
+
+    form input,
+    form select,
+    form button {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    form button {
+      background-color: white;
+      color: teal;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.6);
+    }
+
+    .modal-content {
+      background-color: white;
+      color: black;
+      margin: 15% auto;
+      padding: 20px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .modal-content button {
+      margin: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .confirm-btn {
+      background-color: teal;
+      color: white;
+    }
+
+    .cancel-btn {
+      background-color: gray;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-left">
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+      <div class="right-text" id="top-name" onload="dyname()"></div>
+    </div>
+    <ul id="nav-menu">
+      <li><a href="#">Home</a></li>
+      <li>
+        <a href="#">My Profile</a>
+        <ul>
+          <li><a href="#">My Details</a></li>
+          <li><a href="#">Edit Details</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">My Trips</a>
+        <ul>
+          <li><a href="#">Upcoming</a></li>
+          <li><a href="#">Cancelled</a></li>
+          <li><a href="#">Completed</a></li>
+        </ul>
+      </li>
+      <li><a href="#" onclick="showLogoutModal()">Logout</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h2>Welcome to Easy Go - AMS</h2>
+    <form>
+      <label for="from">From</label>
+      <select id="from" name="from">
+        <option>Chennai</option>
+        <option>Delhi</option>
+        <option>Mumbai</option>
+      </select>
+
+      <label for="to">To</label>
+      <select id="to" name="to">
+        <option>Bangalore</option>
+        <option>Kolkata</option>
+        <option>Hyderabad</option>
+      </select>
+
+      <label for="date">Departure Date</label>
+      <input type="date" id="date" name="date" />
+
+      <label for="travellers">No of Travellers</label>
+      <input type="number" id="travellers" name="travellers" min="1" />
+
+      <label for="class">Class</label>
+      <select id="class" name="class">
+        <option>Economy</option>
+        <option>Business</option>
+        <option>First</option>
+      </select>
+
+      <button type="submit">Search</button>
+    </form>
+  </div>
+
+  <div id="logoutModal" class="modal">
+    <div class="modal-content">
+      <p>Are you sure you want to logout?</p>
+      <button class="confirm-btn" onclick="logout()">Yes, Logout</button>
+      <button class="cancel-btn" onclick="hideLogoutModal()">Cancel</button>
+    </div>
+  </div>
+
+  <script src="Javascript.js">
+ 
+  </script>
+</body>
+</html>

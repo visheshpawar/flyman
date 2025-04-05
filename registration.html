@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Passenger Registration</title>
+  <style>
+    body {
+      background-color: teal;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .form-container {
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #006666;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .error {
+      color: red;
+      font-size: 0.9rem;
+    }
+    .success-popup {
+      display: none;
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      padding: 1rem;
+      border-radius: 5px;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .buttons {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    button {
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .submit-btn {
+      background-color: #007d7d;
+      color: white;
+    }
+    .reset-btn {
+      background-color: #ccc;
+      color: black;
+    }
+    .login-button {
+      margin-top: 1rem;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 5px;
+      text-decoration: none;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Passenger Registration</h2>
+    <form id="registrationForm">
+      <label>First Name</label>
+      <input type="text" id="fname" />
+      <div id="fnameError" class="error"></div>
+
+      <label>Last Name</label>
+      <input type="text" id="lname" />
+      <div id="lnameError" class="error"></div>
+
+      <label>Date of Birth</label>
+      <input type="date" id="dob" />
+      <div id="dobError" class="error"></div>
+
+      <label>Contact Number</label>
+      <input type="text" id="contact" />
+      <div id="contactError" class="error"></div>
+
+      <label>Email ID</label>
+      <input type="text" id="email" />
+      <div id="emailError" class="error"></div>
+
+      <div class="buttons">
+        <button type="button" class="submit-btn" onclick="validateForm()">Submit</button>
+        <button type="button" class="reset-btn" onclick="confirmReset()">Reset</button>
+      </div>
+    </form>
+
+    <div class="success-popup" id="successPopup"></div>
+  </div>
+
+  <script src="Javascript.js">
+  
+  </script>
+</body>
+</html>
