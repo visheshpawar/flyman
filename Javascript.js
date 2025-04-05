@@ -106,7 +106,7 @@ function toggleMenu() {
       const nameOut = credUser[userId];
 document.getElementById
         setTimeout(() => {
-             successDiv.textContent = "";
+               successDiv.style.display="none";
           window.location.href = "homepage.html";
         }, 1500);
       }
